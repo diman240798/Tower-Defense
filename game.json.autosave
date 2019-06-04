@@ -502,6 +502,15 @@
         "name": "assets\\aaguntopdown.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/Explosion_Sequence_A 8.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_Sequence_A 8.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -1635,6 +1644,10 @@
         {
           "name": "numLives",
           "value": "20"
+        },
+        {
+          "name": "money",
+          "value": "300"
         }
       ],
       "instances": [
@@ -1708,7 +1721,37 @@
           "width": 0,
           "x": 600,
           "y": 1000,
-          "zOrder": 9,
+          "zOrder": 15,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Money",
+          "width": 0,
+          "x": 1769,
+          "y": 63,
+          "zOrder": 10,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "TurretCreateBase",
+          "width": 0,
+          "x": 600,
+          "y": 1000,
+          "zOrder": 11,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -2679,6 +2722,93 @@
           ],
           "animations": [
             {
+              "name": "available",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "assets\\aaguntopdown.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "faded",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "assets\\Explosion_Sequence_A 8.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "Money",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "Money: 300",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        },
+        {
+          "name": "TurretCreateBase",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
               "name": "",
               "useMultipleDirections": false,
               "directions": [
@@ -2717,7 +2847,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Turret",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3675,7 +3805,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "CameraMovement",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3857,11 +3987,139 @@
                         "TurretCreate.Variable(lastY)"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "money",
+                        "-",
+                        "300"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::String"
+                      },
+                      "parameters": [
+                        "Money",
+                        "=",
+                        "\"Lives: \" + ToString(Variable(money))"
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
                 }
               ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "Money",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarScene"
+                  },
+                  "parameters": [
+                    "money",
+                    "<",
+                    "300"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ActivateBehavior"
+                  },
+                  "parameters": [
+                    "TurretCreate",
+                    "Draggable",
+                    "no"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetAnimationName"
+                  },
+                  "parameters": [
+                    "TurretCreate",
+                    "\"faded\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarScene"
+                  },
+                  "parameters": [
+                    "money",
+                    ">=",
+                    "300"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ActivateBehavior"
+                  },
+                  "parameters": [
+                    "TurretCreate",
+                    "Draggable",
+                    "yes"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SetAnimationName"
+                  },
+                  "parameters": [
+                    "TurretCreate",
+                    "\"available\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ],
           "parameters": []
@@ -4149,6 +4407,42 @@
                         "Variable(scrollDistanceX)"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "TurretCreateBase",
+                        "+",
+                        "Variable(scrollDistanceX)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "Lives",
+                        "+",
+                        "Variable(scrollDistanceX)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "Money",
+                        "+",
+                        "Variable(scrollDistanceX)"
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -4219,6 +4513,42 @@
                         "Variable(scrollDistanceX)"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "TurretCreateBase",
+                        "-",
+                        "Variable(scrollDistanceX)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "Lives",
+                        "-",
+                        "Variable(scrollDistanceX)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "Money",
+                        "-",
+                        "Variable(scrollDistanceX)"
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -4267,6 +4597,20 @@
                     {
                       "type": {
                         "inverted": false,
+                        "value": "CameraY"
+                      },
+                      "parameters": [
+                        "",
+                        "+",
+                        "Variable(scrollDistanceY)",
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
                         "value": "MettreY"
                       },
                       "parameters": [
@@ -4279,14 +4623,36 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "CameraY"
+                        "value": "MettreY"
                       },
                       "parameters": [
-                        "",
+                        "TurretCreateBase",
                         "+",
-                        "Variable(scrollDistanceY)",
-                        "",
-                        ""
+                        "Variable(scrollDistanceY)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreY"
+                      },
+                      "parameters": [
+                        "Lives",
+                        "+",
+                        "Variable(scrollDistanceY)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreY"
+                      },
+                      "parameters": [
+                        "Money",
+                        "+",
+                        "Variable(scrollDistanceY)"
                       ],
                       "subInstructions": []
                     }
@@ -4337,6 +4703,20 @@
                     {
                       "type": {
                         "inverted": false,
+                        "value": "CameraY"
+                      },
+                      "parameters": [
+                        "",
+                        "-",
+                        "Variable(scrollDistanceY)",
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
                         "value": "MettreY"
                       },
                       "parameters": [
@@ -4349,14 +4729,36 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "CameraY"
+                        "value": "MettreY"
                       },
                       "parameters": [
-                        "",
+                        "TurretCreateBase",
                         "-",
-                        "Variable(scrollDistanceY)",
-                        "",
-                        ""
+                        "Variable(scrollDistanceY)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreY"
+                      },
+                      "parameters": [
+                        "Lives",
+                        "-",
+                        "Variable(scrollDistanceY)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreY"
+                      },
+                      "parameters": [
+                        "Money",
+                        "-",
+                        "Variable(scrollDistanceY)"
                       ],
                       "subInstructions": []
                     }
