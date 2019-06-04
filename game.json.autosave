@@ -1637,7 +1637,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.514
+        "zoomFactor": 0.442
       },
       "objectsGroups": [],
       "variables": [
@@ -1647,7 +1647,7 @@
         },
         {
           "name": "money",
-          "value": "300"
+          "value": "1000"
         }
       ],
       "instances": [
@@ -1865,7 +1865,12 @@
           "tags": "",
           "type": "Sprite",
           "updateIfNotVisible": false,
-          "variables": [],
+          "variables": [
+            {
+              "name": "lives",
+              "value": "20"
+            }
+          ],
           "behaviors": [
             {
               "name": "Pathfinding",
@@ -2412,7 +2417,7 @@
           ]
         },
         {
-          "name": "grass",
+          "name": "obstacle",
           "tags": "",
           "type": "Sprite",
           "updateIfNotVisible": false,
@@ -2847,7 +2852,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "Turret",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3035,65 +3040,111 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "explosion",
-                    "enemy.PointX(\"Center\")",
-                    "enemy.PointY(\"Center\")",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Delete"
+                    "value": "ModVarObjet"
                   },
                   "parameters": [
                     "enemy",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Delete"
-                  },
-                  "parameters": [
-                    "bullet",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "money",
-                    "+",
-                    "100"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "TextObject::String"
-                  },
-                  "parameters": [
-                    "Money",
-                    "=",
-                    "\"Lives: \" + ToString(Variable(money))"
+                    "lives",
+                    "-",
+                    "1"
                   ],
                   "subInstructions": []
                 }
               ],
-              "events": []
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjet"
+                      },
+                      "parameters": [
+                        "enemy",
+                        "lives",
+                        "<=",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Create"
+                      },
+                      "parameters": [
+                        "",
+                        "explosion",
+                        "enemy.PointX(\"Center\")",
+                        "enemy.PointY(\"Center\")",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "enemy",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "money",
+                        "+",
+                        "100"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::String"
+                      },
+                      "parameters": [
+                        "Money",
+                        "=",
+                        "\"Lives: \" + ToString(Variable(money))"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "bullet",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
             },
             {
               "disabled": false,
@@ -3547,7 +3598,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "Enemy",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3852,7 +3903,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "NewObjects",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -4083,7 +4134,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Money",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
