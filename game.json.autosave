@@ -1637,7 +1637,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.346
+        "zoomFactor": 0.514
       },
       "objectsGroups": [],
       "variables": [
@@ -2847,7 +2847,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Turret",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3852,7 +3852,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "NewObjects",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3973,71 +3973,104 @@
                       "subInstructions": []
                     }
                   ],
-                  "actions": [
+                  "actions": [],
+                  "events": [
                     {
-                      "type": {
-                        "inverted": false,
-                        "value": "Create"
-                      },
-                      "parameters": [
-                        "",
-                        "turret",
-                        "TurretCreate.X()",
-                        "TurretCreate.Y()",
-                        ""
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "CollisionNP"
+                          },
+                          "parameters": [
+                            "TurretCreate",
+                            "TurretCreateBase",
+                            "",
+                            "",
+                            "no"
+                          ],
+                          "subInstructions": []
+                        }
                       ],
-                      "subInstructions": []
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarScene"
+                          },
+                          "parameters": [
+                            "money",
+                            "-",
+                            "300"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "TextObject::String"
+                          },
+                          "parameters": [
+                            "Money",
+                            "=",
+                            "\"Lives: \" + ToString(Variable(money))"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "turret",
+                            "TurretCreate.X()",
+                            "TurretCreate.Y()",
+                            ""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
                     },
                     {
-                      "type": {
-                        "inverted": false,
-                        "value": "MettreX"
-                      },
-                      "parameters": [
-                        "TurretCreate",
-                        "=",
-                        "TurretCreate.Variable(lastX)"
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "MettreY"
+                          },
+                          "parameters": [
+                            "TurretCreate",
+                            "=",
+                            "TurretCreate.Variable(lastY)"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "MettreX"
+                          },
+                          "parameters": [
+                            "TurretCreate",
+                            "=",
+                            "TurretCreate.Variable(lastX)"
+                          ],
+                          "subInstructions": []
+                        }
                       ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "MettreY"
-                      },
-                      "parameters": [
-                        "TurretCreate",
-                        "=",
-                        "TurretCreate.Variable(lastY)"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarScene"
-                      },
-                      "parameters": [
-                        "money",
-                        "-",
-                        "300"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "TextObject::String"
-                      },
-                      "parameters": [
-                        "Money",
-                        "=",
-                        "\"Lives: \" + ToString(Variable(money))"
-                      ],
-                      "subInstructions": []
+                      "events": []
                     }
-                  ],
-                  "events": []
+                  ]
                 }
               ]
             }
@@ -4050,7 +4083,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "Money",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
