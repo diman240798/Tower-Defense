@@ -2847,7 +2847,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "Turret",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3065,6 +3065,30 @@
                   "parameters": [
                     "bullet",
                     ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "money",
+                    "+",
+                    "100"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "Money",
+                    "=",
+                    "\"Lives: \" + ToString(Variable(money))"
                   ],
                   "subInstructions": []
                 }
@@ -3828,7 +3852,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "NewObjects",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -4026,7 +4050,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Money",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
