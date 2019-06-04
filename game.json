@@ -3982,7 +3982,7 @@
                       "conditions": [
                         {
                           "type": {
-                            "inverted": false,
+                            "inverted": true,
                             "value": "CollisionNP"
                           },
                           "parameters": [
