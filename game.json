@@ -1637,13 +1637,13 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.442
+        "zoomFactor": 0.322
       },
       "objectsGroups": [],
       "variables": [
         {
           "name": "numLives",
-          "value": "20"
+          "value": "1"
         },
         {
           "name": "money",
@@ -2852,7 +2852,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Turret",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3608,7 +3608,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Enemy",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3719,7 +3719,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "Game Over",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3875,6 +3875,62 @@
                   "parameters": [
                     "",
                     "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Visible"
+                  },
+                  "parameters": [
+                    "GameOver"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MouseButtonReleased"
+                  },
+                  "parameters": [
+                    "",
+                    "Left"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "GameOver",
+                    "",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"GameMenu\"",
+                    "yes"
                   ],
                   "subInstructions": []
                 }
@@ -4263,7 +4319,7 @@
         },
         {
           "name": "gameOver",
-          "visibility": false,
+          "visibility": true,
           "cameras": [],
           "effects": []
         }
