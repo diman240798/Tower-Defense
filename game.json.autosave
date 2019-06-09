@@ -565,6 +565,15 @@
         "name": "assets\\my\\EnemiesGoalPoint.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/tower-defense-top-down/PNG/Retina/towerDefense_tile249.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\tower-defense-top-down\\PNG\\Retina\\towerDefense_tile249.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -1931,7 +1940,7 @@
           "behaviors": [],
           "animations": [
             {
-              "name": "",
+              "name": "towerDefense_tile249",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -1940,12 +1949,12 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "aaguntopdown.png",
+                      "image": "assets\\tower-defense-top-down\\PNG\\Retina\\towerDefense_tile249.png",
                       "points": [
                         {
                           "name": "Canon",
-                          "x": 110,
-                          "y": 35
+                          "x": 100,
+                          "y": 65
                         }
                       ],
                       "originPoint": {
@@ -3213,7 +3222,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "name": "Turret",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
